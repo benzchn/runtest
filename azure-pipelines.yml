@@ -23,3 +23,12 @@ steps:
   displayName: 'composer install'
 
 - task: PublishBuildArtifacts@1
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students (fce2c8ea-c231-49d9-a40b-fbfcb36c84f0)'
+    appType: 'webAppLinux'
+    WebAppName: 'webapp-demo-001'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'PHP|7.3'
